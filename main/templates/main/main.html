@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>W3.CSS Template</title>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif
+        }
+
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
+
+        .w3-sidebar {
+            width: 120px;
+            background: #222;
+        }
+
+        #main {
+            margin-left: 120px
+        }
+
+        .excellent {
+            height: 28px;
+            width: 100%;
+        }
+
+        .very-good {
+            height: 28px;
+            width: 75%;
+        }
+
+        .good {
+            height: 28px;
+            width: 50%;
+        }
+
+        .beginner {
+            height: 28px;
+            width: 25%;
+        }
+
+        a:hover {
+            font-size: 110%;
+            background-color: lightgrey;
+        }
+
+        .container1 {
+            width: 100%;
+            font-size: 100%;
+
+        }
+
+        .container2 {
+            font-size: 170%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0
+            }
+        }
+    </style>
+</head>
+
+<body class="w3-black">
+
+    <div class="w3-padding-large d-flex justify-content-center" id="main">
+        <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+            <h1 class="container2" ;">I'm Jihad Hammoud.</h1>
+            <p>{{pro}}</p>
+            <img src="{% static 'images/bg2.jpg' %}" alt="boy" class=" img-fluid" width="992" height="1108">
+        </header>
+
+        <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+            <h2 class="w3-text-light-grey">About me</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <p class='container1 '>{{ab}}
+            </p>
+            <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
+            {% for i in skills %}
+            <p class="w3-wide">{{i.skill}}</p>
+            <div class="w3-white">
+                <div class="w3-dark-grey {{i.rating}}"></div>
+            </div><br>
+            {% endfor %}
+            <h3 class="w3-padding-24 w3-text-light-grey">My Experiences</h3>
+            <ol>
+                {% for e in exp %}
+                <li>
+                    <h5 class='container1 '>{{e}}</h5>
+                </li>
+                {% endfor %}
+
+            </ol>
+            <h3 class="w3-padding-16 w3-text-light-grey">My Projects</h3>
+            <ol>
+                {% for j in projects %}
+                <li>
+                    <h5 class='container1 '>{{j.name}}</h5><a href='{{j.url}}'
+                        style="color:rgba(255, 255, 255, 0.792);">View source code</a>
+                </li>
+                {% endfor %}
+            </ol>
+            <h3 class="w3-padding-16 w3-text-light-grey">Previous Jobs</h3>
+            <ol>
+                {% for o in jobs %}
+
+                <li>
+                    <h5 style="color: rgba(190, 187, 187, 0.548);">
+                        <h6 style="color:silver">{{o.name}}:</h6> {{o.desc}} , {{o.date}}
+                    </h5>
+                </li>
+
+                {% endfor %}
+            </ol>
+            <h3 class="w3-padding-24 w3-text-light-grey">My Education</h3>
+            {% for u in educ %}
+            <h5 class='container1 ' style="color: rgba(190, 187, 187, 0.548);">{{u.type}}, {{u.name}} , {{u.country}}
+            </h5>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div style='padding: 20px;' class="w3-padding-64 w3-content w3-text-grey" id="contact">
+        <h2 class="w3-text-light-grey">Contact Me</h2>
+        <hr style="width:200px" class="w3-opacity">
+
+        <div class="w3-section">
+            <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>{{country}}</p>
+            <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"><a href='tel:{{num}}'></i> Phone:
+                {{num}}</a></p>
+            <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"><a href="mailto:{{email}}"></i>
+                Email: {{email}}</a> </p>
+        </div><br>
+    </div>
+
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
